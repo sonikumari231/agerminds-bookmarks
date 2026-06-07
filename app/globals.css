@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink-950: #120e0c;
+  --ink-900: #1e1714;
+  --ink-800: #332824;
+  --ink-700: #4a3932;
+  --ink-600: #624d42;
+  --ink-500: #7c6355;
+  --ink-400: #9a8270;
+  --ink-300: #b8a490;
+  --ink-200: #d4c4b6;
+  --ink-100: #e8ddd3;
+  --ink-50:  #f5f0eb;
+  --cream-400: #eed4b8;
+  --cream-300: #f5e4d0;
+  --cream-200: #faf0e4;
+  --cream-100: #fdf8f2;
+  --cream-50:  #fefcf9;
+  --moss-600: #527040;
+  --moss-500: #6d8a58;
+  --moss-400: #8fa87a;
+  --rust-600: #9a4e2c;
+  --rust-500: #b5623a;
+  --rust-400: #c97a4e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--cream-100);
+  color: var(--ink-900);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--cream-200); }
+::-webkit-scrollbar-thumb { background: var(--ink-200); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--ink-300); }
+
+/* ── Selection ─────────────────────────────────────────── */
+::selection {
+  background: var(--moss-400);
+  color: white;
+}
+
+/* ── Focus ──────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--moss-500);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Utility classes ────────────────────────────────────── */
+.font-display { font-family: 'Instrument Serif', Georgia, serif; }
+.font-mono    { font-family: 'JetBrains Mono', monospace; }
+
+/* ── Input base ─────────────────────────────────────────── */
+.input-base {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--cream-50);
+  border: 1.5px solid var(--ink-100);
+  border-radius: 6px;
+  color: var(--ink-900);
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.input-base:focus {
+  outline: none;
+  border-color: var(--moss-500);
+  box-shadow: 0 0 0 3px rgba(110, 138, 88, 0.12);
+}
+.input-base::placeholder { color: var(--ink-300); }
+
+/* ── Button base ─────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--ink-900);
+  color: var(--cream-100);
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  text-decoration: none;
+}
+.btn-primary:hover { background: var(--ink-800); }
+.btn-primary:active { transform: scale(0.98); }
+.btn-primary:disabled { background: var(--ink-300); cursor: not-allowed; }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: transparent;
+  color: var(--ink-700);
+  border: 1.5px solid var(--ink-200);
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  text-decoration: none;
+}
+.btn-secondary:hover { background: var(--cream-200); border-color: var(--ink-300); }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: transparent;
+  color: var(--ink-500);
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.btn-ghost:hover { background: var(--ink-50); color: var(--ink-700); }
+
+/* ── Card ───────────────────────────────────────────────── */
+.card {
+  background: var(--cream-50);
+  border: 1px solid var(--ink-100);
+  border-radius: 10px;
+}
+
+/* ── Error text ─────────────────────────────────────────── */
+.error-text {
+  font-size: 12px;
+  color: var(--rust-500);
+  margin-top: 4px;
+}
+
+/* ── Badge ──────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 500;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.badge-public  { background: #e8f0e2; color: var(--moss-600); }
+.badge-private { background: var(--ink-50); color: var(--ink-500); }
