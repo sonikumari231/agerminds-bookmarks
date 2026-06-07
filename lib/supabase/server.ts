@@ -13,24 +13,22 @@ export async function createClient() {
         getAll() {
           return cookieStore.getAll();
         },
-        setAll(cookiesToSet) {
+        setAll(cookiesToSet: Array<{ name: string; value: string; options: Record<string, unknown> }>) {
           try {
             cookiesToSet.forEach(({ name, value, options }) =>
-              cookieStore.set(name, value, options)
+              cookieStore.set(name, value, options as any)
             );
           } catch {
-            // setAll can throw in Server Components — safe to ignore when
-            // the session is being refreshed by middleware.
+            // safe to ignore
           }
         },
       },
     }
-  ) as any;
+  );
 }
 
-/** Service-role client — ONLY for trusted server-side operations.
- *  Never expose the service role key to the browser. */
 export function createAdminClient() {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const { createClient: createSupabaseClient } = require("@supabase/supabase-js");
   return createSupabaseClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
